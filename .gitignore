@@ -1,0 +1,38 @@
+**/bin/
+**/obj/
+.vs/
+artifacts/
+**/settings.json
+**/settings.ini
+**/captures/
+*.user
+
+# Local validation application, fixtures, settings and recordings
+/validation/
+
+# Local workspace for release UI refinement
+/release-work/
+
+# Private source audio and generated detection features
+/assets/sounds/
+/assets/icon/
+/src/DojoFishing/Detection/Templates/
+*.wav
+*.mp3
+*.aiff
+*.flac
+*.ogg
+
+# Build / packaging output and local IDE state
+/dist/
+/publish/
+*.zip
+*.7z
+*.msix
+*.msixbundle
+*.exe
+*.dll
+*.pdb
+*.nupkg
+*.suo
+*.userosscache

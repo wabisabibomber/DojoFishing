@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DojoFishing/DojoFishing.csproj" />
+  </Folder>
+  <Folder Name="/developer/">
+    <Project Path="developer/TemplateCompiler/TemplateCompiler.csproj" />
+    <Project Path="developer/Checks/Checks.csproj" />
+  </Folder>
+</Solution>

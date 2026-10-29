@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <PlatformTarget>x64</PlatformTarget>
+    <DetectionTemplatePath Condition="'$(DetectionTemplatePath)' == ''">$(MSBuildProjectDirectory)/Detection/Templates/target.bin</DetectionTemplatePath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="Exists('../../assets/icon/app.ico')">
+    <ApplicationIcon>../../assets/icon/app.ico</ApplicationIcon>
+    <DefineConstants>$(DefineConstants);CUSTOM_APP_ICON</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="$(DetectionTemplatePath)" LogicalName="DojoFishing.TargetTemplate" />
+    <Resource Include="../../assets/icon/app.ico" Link="Assets/app.ico" Condition="Exists('../../assets/icon/app.ico')" />
+  </ItemGroup>
+
+  <Target Name="ValidateDetectionTemplate" BeforeTargets="PrepareForBuild" Condition="'$(DesignTimeBuild)' != 'true'">
+    <Error Condition="!Exists('$(DetectionTemplatePath)')" Text="検出用の解析データがありません。README.md の「ソースからビルドする」を参照し、developer/TemplateCompiler で自分のWAVから target.bin を生成してください。" />
+  </Target>
+</Project>
